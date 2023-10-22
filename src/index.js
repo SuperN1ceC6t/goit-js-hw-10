@@ -45,6 +45,7 @@ function onSelectBreed(event) {
     loaderTitle.classList.replace('is-hidden', 'loader');
     catSelector.classList.add('is-hidden');
     catInfo.classList.add('is-hidden');
+    errorTitle.classList.add('is-hidden')
     if (a >= 2){breedId = event.currentTarget.value;}
   fetchCatByBreed(breedId)
     .then(data => {
