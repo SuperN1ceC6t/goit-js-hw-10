@@ -46,17 +46,16 @@ function onSelectBreed(event) {
     catSelector.classList.add('is-hidden');
     catInfo.classList.add('is-hidden');
     errorTitle.classList.add('is-hidden')
-    if (a >= 2){breedId = event.currentTarget.value;}
+  breedId = event.currentTarget.value;
   fetchCatByBreed(breedId)
     .then(data => {
       if (data.length === 0 && a >= 2) {
         errorTitle.classList.remove("is-hidden");
       }
-      console.log(data.length);
       loaderTitle.classList.replace('loader', 'is-hidden');
       catSelector.classList.remove('is-hidden');
       const { url, breeds } = data[0];
-      catInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+      if (a >= 2) { catInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`; }
       catInfo.classList.remove('is-hidden');
     });
 }
